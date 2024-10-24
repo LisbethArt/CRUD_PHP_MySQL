@@ -1,0 +1,7 @@
+.padding {
+    padding: 20px;
+}
+
+.g-8, .gx-8 {
+    --bs-gutter-x: 20rem;
+}
