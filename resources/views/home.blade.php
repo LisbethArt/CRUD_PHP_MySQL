@@ -2,8 +2,19 @@
 @section('title', 'Home')
 
 @section('content')
-<a href="{{ url('/agregar') }}" class="btn btn-success btn-sm">Agregar Proyecto</a>
-</br></br>
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <a href="{{ url('/agregar') }}" class="btn btn-success btn-sm d-flex align-items-center" style="margin-left: 20px;">
+        <i class="bi bi-plus text-white me-2"></i> Agregar Proyecto
+    </a>
+    <div class="d-flex align-items-center">
+        <a href="{{ route('proyectos.pdf') }}" class="btn btn-primary btn-sm d-flex align-items-center me-3">
+            <i class="bi bi-eye text-white me-2"></i> Ver PDF
+        </a>
+        <a href="{{ route('proyectos.pdf.download') }}" class="btn btn-secondary btn-sm d-flex align-items-center" style="margin-right: 20px;">
+            <i class="bi bi-download text-white me-2"></i> Descargar PDF
+        </a>
+    </div>
+</div>
 <table id="proyectosTable" class="table">
         <thead>
             <tr>

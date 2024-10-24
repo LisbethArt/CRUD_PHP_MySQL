@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Proyectos;
 use Exception;
+use PDF;
 
 class ProyectosController extends Controller
 {
@@ -71,5 +72,27 @@ class ProyectosController extends Controller
         } catch (Exception $e) {
             return redirect()->route('proyectos.home')->with('error', 'Error al eliminar el proyecto: ' . $e->getMessage());
         }
+    }
+
+    public function generatePDF() {
+        $proyectos = Proyectos::all();
+        if ($proyectos->isEmpty()) {
+            return redirect()->route('proyectos.home')->with('error', 'Para ver el PDF debes de tener al menos un registro.');
+        }
+        $currentDateTime = \Carbon\Carbon::now('America/El_Salvador')->format('d/m/Y H:i:s');
+        $pdf = PDF::loadView('pdf', compact('proyectos', 'currentDateTime'));
+        $fileName = 'Proyectos_' . \Carbon\Carbon::now('America/El_Salvador')->format('dmY_Hi') . '.pdf';
+        return $pdf->stream($fileName);
+    }
+    
+    public function downloadPDF() {
+        $proyectos = Proyectos::all();
+        if ($proyectos->isEmpty()) {
+            return redirect()->route('proyectos.home')->with('error', 'Para descargar el PDF debes de tener al menos un registro.');
+        }
+        $currentDateTime = \Carbon\Carbon::now('America/El_Salvador')->format('d/m/Y H:i:s');
+        $pdf = PDF::loadView('pdf', compact('proyectos', 'currentDateTime'));
+        $fileName = 'Proyectos_' . \Carbon\Carbon::now('America/El_Salvador')->format('dmY_Hi') . '.pdf';
+        return $pdf->download($fileName);
     }
 }

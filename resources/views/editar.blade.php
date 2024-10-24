@@ -24,7 +24,6 @@
                 <div class="input-group">
                     <span class="input-group-text">$</span>
                     <input type="number" step="0.01" class="form-control" id="montoPlanificado" name="montoPlanificado" value="{{ $proyecto->montoPlanificado }}" required>
-                    <span class="input-group-text">.00</span>
                 </div>
             </div>
             <div class="col-md-4 mb-3">
@@ -32,7 +31,6 @@
                 <div class="input-group">
                     <span class="input-group-text">$</span>
                     <input type="number" step="0.01" class="form-control" id="montoPatrocinado" name="montoPatrocinado" value="{{ $proyecto->montoPatrocinado }}" required>
-                    <span class="input-group-text">.00</span>
                 </div>
             </div>
             <div class="col-md-4 mb-3">
@@ -40,7 +38,6 @@
                 <div class="input-group">
                     <span class="input-group-text">$</span>
                     <input type="number" step="0.01" class="form-control" id="montoFondosPropios" name="montoFondosPropios" value="{{ $proyecto->montoFondosPropios }}" required>
-                    <span class="input-group-text">.00</span>
                 </div>
             </div>
         </div>
